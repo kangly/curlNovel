@@ -14,6 +14,7 @@ require_once '../function.php';
 use QL\QueryList;
 
 /**
+ * 暂时不记录日志
  * 抓取https://www.xsbiquge.com站点小说
  * Class curlxsbiqugeClass
  */
@@ -26,7 +27,7 @@ class curlxsbiqugeClass extends baseClass
 
     protected function curl_xsbiquge()
     {
-        $url_data = $this->dbm->select('novel', ['id','source_link(url)'], ['source'=>1]);
+        $url_data = $this->dbm->select('novel', ['id','source_link(url)'], ['source'=>1,'is_curl'=>0]);
 
         foreach ($url_data as $e)
         {
@@ -48,10 +49,6 @@ class curlxsbiqugeClass extends baseClass
 
             foreach ($chapter_data as $k=>$v)
             {
-                if($k>20){
-                    exit();
-                }
-
                 sleep(5);
 
                 //小说章节详情
@@ -86,6 +83,8 @@ class curlxsbiqugeClass extends baseClass
                     }
                 }
             }
+
+            $this->dbm->update('novel',['is_curl'=>1],['id'=>$e['id']]);
         }
     }
 }

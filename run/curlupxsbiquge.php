@@ -14,6 +14,7 @@ require_once '../function.php';
 use QL\QueryList;
 
 /**
+ * 暂时不记录日志
  * 更新https://www.xsbiquge.com站点小说
  * Class curlupxsbiqugeClass
  */

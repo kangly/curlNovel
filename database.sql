@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS `novel`;
 
 CREATE TABLE `novel` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '小说表id',
-  `type_id` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '类别id',
+  `type_id` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '类别id',
   `title` varchar(50) NOT NULL DEFAULT '' COMMENT '小说名称',
   `author` varchar(50) NOT NULL DEFAULT '' COMMENT '小说作者',
   `summary` varchar(500) NOT NULL DEFAULT '' COMMENT '小说简介',
@@ -10,6 +10,7 @@ CREATE TABLE `novel` (
   `source_link` varchar(100) NOT NULL DEFAULT '' COMMENT '小说来源链接',
   `is_publish` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '是否发布',
   `is_recommend` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否首页推荐',
+  `is_curl` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否已抓取',
   `user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建人id',
   `username` varchar(50) NOT NULL DEFAULT '' COMMENT '创建人姓名',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
@@ -22,8 +23,8 @@ CREATE TABLE `novel` (
 DROP TABLE IF EXISTS `novel_type`;
 
 CREATE TABLE `novel_type` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '小说类别表id',
-  `pid` int(10) unsigned NOT NULL COMMENT '父级类别id',
+  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT COMMENT '小说类别表id',
+  `pid` smallint(5) unsigned NOT NULL COMMENT '父级类别id',
   `title` varchar(50) NOT NULL COMMENT '类别标题',
   `intro` varchar(100) NOT NULL COMMENT '类别介绍',
   `user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建人id',
