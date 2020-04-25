@@ -52,8 +52,10 @@ DROP TABLE IF EXISTS `novel_content`;
 
 CREATE TABLE `novel_content` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '小说章节内容表id',
+  `novel_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '小说表id',
   `chapter_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '小说章节表id',
   `content` text COMMENT '小说章节内容',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `novel_id` (`novel_id`,`chapter_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

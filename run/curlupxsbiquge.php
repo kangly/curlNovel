@@ -87,6 +87,7 @@ class curlupxsbiqugeClass extends baseClass
                         if($chapter_id>0)
                         {
                             $this->dbm->insert('novel_content',[
+                                'novel_id' => $e['id'],
                                 'chapter_id' => $chapter_id,
                                 'content' => $view_data['content'],
                                 'create_time' => _time()
