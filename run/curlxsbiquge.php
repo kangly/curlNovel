@@ -12,7 +12,6 @@ require_once '../base.php';
 require_once '../function.php';
 
 use QL\QueryList;
-use GuzzleHttp\Exception\RequestException;
 
 /**
  * 抓取https://www.xsbiquge.com站点小说
@@ -157,7 +156,7 @@ class curlxsbiqugeClass extends baseClass
                     'data' => $view_data
                 ];
             }
-            catch(RequestException $e){
+            catch(Exception $e){
                 return [
                     'code' => 1001,
                     'msg' => $e->getMessage(),

@@ -11,7 +11,6 @@
 require_once '../base.php';
 require_once '../function.php';
 
-use GuzzleHttp\Exception\RequestException;
 use QL\QueryList;
 
 /**
@@ -173,7 +172,7 @@ class curlupxsbiqugeClass extends baseClass
                     'data' => $view_data
                 ];
             }
-            catch(RequestException $e){
+            catch(Exception $e){
                 return [
                     'code' => 1001,
                     'msg' => $e->getMessage(),
