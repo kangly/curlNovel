@@ -23,3 +23,12 @@ function de($str){
 function _time(){
     return date('Y-m-d H:i:s');
 }
+
+/**
+ * 写入数据到文件
+ * @param $log
+ * @param string $file
+ */
+function _log($log,$file='test'){
+    file_put_contents('../log/'.$file.'.txt', $log."\n", FILE_APPEND);
+}
