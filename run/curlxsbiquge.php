@@ -52,7 +52,7 @@ class curlxsbiqugeClass extends baseClass
                 $is_exist = $this->dbm->select('novel_chapter', ['id'], ['novel_id'=>$e['id'],'source_id'=>$source_id]);
                 if($is_exist){
                     _log('novel chapter '.$v['url'].' exist',$filename);
-                    break;
+                    continue;
                 }
 
                 sleep(3);
