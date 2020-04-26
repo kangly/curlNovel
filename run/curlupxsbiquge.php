@@ -29,7 +29,7 @@ class curlupxsbiqugeClass extends baseClass
         $filename = 'up_novel_'.date('Y-m-d');
         _log('start curl novel',$filename);
 
-        $url_data = $this->dbm->select('novel', ['id','source_link(url)'], ['source'=>1]);
+        $url_data = $this->dbm->select('novel', ['id','source_link(url)'], ['source'=>1,'is_curl'=>1,'is_finish'=>0]);
 
         foreach ($url_data as $e)
         {
