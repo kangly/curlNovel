@@ -47,6 +47,14 @@ class curlxsbiqugeClass extends baseClass
             {
                 _log('start curl novel chapter '.$v['url'],$filename);
 
+                $source_id = pathinfo($v['url'],PATHINFO_FILENAME);
+
+                $is_exist = $this->dbm->select('novel_chapter', ['id'], ['novel_id'=>$e['id'],'source_id'=>$source_id]);
+                if($is_exist){
+                    _log('novel chapter '.$v['url'].' exist',$filename);
+                    break;
+                }
+
                 sleep(3);
 
                 //小说章节详情
@@ -61,7 +69,7 @@ class curlxsbiqugeClass extends baseClass
                 {
                     $this->dbm->insert('novel_chapter',[
                         'novel_id' => $e['id'],
-                        'source_id' => pathinfo($v['url'],PATHINFO_FILENAME),
+                        'source_id' => $source_id,
                         'title' => $v['title'],
                         'create_time' => _time()
                     ]);
