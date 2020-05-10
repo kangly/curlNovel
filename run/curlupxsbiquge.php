@@ -74,7 +74,7 @@ class curlupxsbiqugeClass extends baseClass
                     }
                     $view_data = $view_data['data'];
 
-                    if($view_data['content'])
+                    if($view_data['content'] && strpos($view_data['content'],'https://www.xsbiquge.com')===false)
                     {
                         $this->dbm->insert('novel_chapter',[
                             'novel_id' => $e['id'],
