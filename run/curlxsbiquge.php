@@ -83,6 +83,8 @@ class curlxsbiqugeClass extends baseClass
                             'content' => $view_data['content'],
                             'create_time' => _time()
                         ]);
+
+                        build_html($e['id'].'/'.$chapter_id,'',$view_data['content'],$filename);
                     }
                 }
 

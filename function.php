@@ -32,3 +32,29 @@ function _time(){
 function _log($log,$file='test'){
     file_put_contents('../log/'.$file.'.txt', $log."\n", FILE_APPEND);
 }
+
+/**
+ * 小说内容静态化
+ * @param string $htmlFile
+ * @param string $htmlPath
+ * @param string $htmlContent
+ * @param string $logFileName
+ * @return bool
+ */
+function build_html($htmlFile='',$htmlPath='',$htmlContent='',$logFileName='')
+{
+    $content    =   $htmlContent;
+    $htmlPath   =   $htmlPath?$htmlPath:'../../MyClub/template/html/';
+    $htmlFile   =   $htmlPath.$htmlFile.'.html';
+
+    $dir        =  dirname($htmlFile);
+    if(!is_dir($dir)){
+        mkdir($dir,0777,true);
+    }
+
+    if(false === file_put_contents($htmlFile,$content)){
+        $this->_log('写入文件失败：'.$htmlFile,$logFileName);
+    }
+
+    return true;
+}
